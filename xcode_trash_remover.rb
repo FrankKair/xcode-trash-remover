@@ -1,8 +1,5 @@
 #!/usr/bin/env ruby
 
-# Usage:
-# ./xcode_trash_remover.rb Username
-
 require 'fileutils'
 
 class String
@@ -17,29 +14,35 @@ end
 
 module Directory
 	DERIVED_DATA_DIR = "/Users/#{ARGV[0]}/Library/Developer/Xcode/DerivedData/*"
+	ARCHIVES_DIR = "/Users/#{ARGV[0]}/Library/Developer/Xcode/Archives/*"
 end
 
 def check_argv
 	if ARGV.empty?
 		puts 'No user path specified'.red
+		puts 'Usage: ./xcode_trash_remover.rb Username' 
 		abort
 	end
 end
 
-def check_folder
-	files = Dir.glob(Directory::DERIVED_DATA_DIR)
-	if files.empty?
-		puts 'There are no files in the directory.'
-		abort
-	end
-	files.each { |folder| puts File.basename(folder) }
+def check_folders
+	Directory.constants.each { |dir|
+		trash_dir = Directory.const_get(dir)
+		files = Dir.glob(trash_dir)
+		if files.empty?
+			puts "There are no files in #{trash_dir}"
+		end
+		files.each { |folder| puts File.basename(folder) }
+	}
 end
 
-def delete_derived_data_files
-	FileUtils.rm_rf(Dir.glob(Directory::DERIVED_DATA_DIR))
-	puts "Deleted all files from #{Directory::DERIVED_DATA_DIR}".red
+def delete_trash_files
+	Directory.constants.each { |dir|
+		FileUtils.rm_rf(Dir.glob(Directory.const_get(dir)))
+		puts "Deleted all files from #{Directory.const_get(dir)}".red
+	}
 end
 
 check_argv
-check_folder
-delete_derived_data_files
+check_folders
+delete_trash_files
