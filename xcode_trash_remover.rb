@@ -15,21 +15,23 @@ def check_argv
 end
 
 def check_folders
-	Directory.constants.each { |dir|
+	Directory.constants.each do |dir|
 		trash_dir = Directory.const_get(dir)
 		files = Dir.glob(trash_dir)
 		if files.empty?
 			puts "There are no files in #{trash_dir}"
 		end
-		files.each { |folder| puts File.basename(folder) }
-	}
+		files.each do |folder|
+			puts File.basename(folder)
+		end
+	end
 end
 
 def delete_trash_files
-	Directory.constants.each { |dir|
+	Directory.constants.each do |dir|
 		FileUtils.rm_rf(Dir.glob(Directory.const_get(dir)))
 		puts "Deleted all files from #{Directory.const_get(dir)}"
-	}
+	end
 end
 
 check_argv
