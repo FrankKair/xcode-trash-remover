@@ -2,8 +2,8 @@
 require 'fileutils'
 
 module Directory
-	DERIVED_DATA_DIRECTORY = "/Users/*/Library/Developer/Xcode/DerivedData/*"
-	ARCHIVES_DIRECTORY = "/Users/*/Library/Developer/Xcode/Archives/*"
+	DERIVED_DATA_DIRECTORY = "#{File.expand_path('~')}/Library/Developer/Xcode/DerivedData/*"
+	ARCHIVES_DIRECTORY = "#{File.expand_path('~')}/Library/Developer/Xcode/Archives/*"
 end
 
 Directory.constants.each do |dir|
