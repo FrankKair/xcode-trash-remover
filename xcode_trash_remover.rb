@@ -34,5 +34,10 @@ XcodeDirectories.constants.each do |dir|
 		FileUtils.rm_rf(folder)
 	end
 end
-puts "Deleted all files from #{XcodeDirectories.constants[0]} and #{XcodeDirectories.constants[1]}"
-puts "\n#{trash_size} bytes deleted"
+
+if trash_size > 0
+	puts "Deleted all files from #{XcodeDirectories.constants[0]} and #{XcodeDirectories.constants[1]}"
+	puts "\n#{trash_size} bytes deleted"
+else
+	puts "The directories are empty"
+end
