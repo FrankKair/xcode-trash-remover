@@ -3,24 +3,9 @@ require 'fileutils'
 require 'find'
 
 module XcodeDirectories
-	DERIVED_DATA = "#{File.expand_path('~')}/Library/Developer/Xcode/DerivedData/*"
-	ARCHIVES = "#{File.expand_path('~')}/Library/Developer/Xcode/Archives/*"
-end
-
-def dir_size(dir_path)
-  total_size = 0
-  Find.find(dir_path) do |path|
-      if FileTest.directory?(path)
-        if File.basename(path)[0] == ?.
-          Find.prune
-        else
-          next
-        end
-      else
-        total_size += FileTest.size(path)
-      end
-    end
-    total_size
+	# DERIVED_DATA = "#{File.expand_path('~')}/Library/Developer/Xcode/DerivedData/*"
+	# ARCHIVES = "#{File.expand_path('~')}/Library/Developer/Xcode/Archives/*"
+	DOWNLOADS = "#{File.expand_path('~')}/Downloads/*"
 end
 
 trash_size = 0
