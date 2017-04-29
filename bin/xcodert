@@ -1,27 +1,10 @@
 #!/usr/bin/env ruby
-require 'fileutils'
 require 'xcode_trash_remover'
 
-module XcodeDirectories
-	DERIVED_DATA = "#{File.expand_path('~')}/Library/Developer/Xcode/DerivedData/*"
-	ARCHIVES = "#{File.expand_path('~')}/Library/Developer/Xcode/Archives/*"
-end
-
-trash_size = 0
-XcodeDirectories.constants.each do |dir|
-	files = Dir.glob(XcodeDirectories.const_get(dir))
-	if files.empty?
-		next
-	end
-	files.each do |folder|
-		trash_size += XcodeTrashRemover::SizeHelper.dir_size(folder)
-		FileUtils.rm_rf(folder)
-	end
-end
-
+trash_size = XcodeTrashRemover::Core.get_trash_size
 if trash_size > 0
-	puts "Deleted all files from #{XcodeDirectories.constants[0]} and #{XcodeDirectories.constants[1]}"
-	puts "\n#{trash_size} bytes deleted"
+	XcodeTrashRemover::Core.remove_trash
+	puts "#{trash_size} bytes deleted"
 else
-	puts "The directories are empty"
+	puts "The directories are empty. No trash files."
 end
