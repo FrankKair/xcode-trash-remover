@@ -1,11 +1,10 @@
 #!/usr/bin/env ruby
 require 'fileutils'
-require 'find'
+require 'xcode_trash_remover'
 
 module XcodeDirectories
-	# DERIVED_DATA = "#{File.expand_path('~')}/Library/Developer/Xcode/DerivedData/*"
-	# ARCHIVES = "#{File.expand_path('~')}/Library/Developer/Xcode/Archives/*"
-	DOWNLOADS = "#{File.expand_path('~')}/Downloads/*"
+	DERIVED_DATA = "#{File.expand_path('~')}/Library/Developer/Xcode/DerivedData/*"
+	ARCHIVES = "#{File.expand_path('~')}/Library/Developer/Xcode/Archives/*"
 end
 
 trash_size = 0
@@ -15,7 +14,7 @@ XcodeDirectories.constants.each do |dir|
 		next
 	end
 	files.each do |folder|
-		trash_size += dir_size(folder)
+		trash_size += XcodeTrashRemover::SizeHelper.dir_size(folder)
 		FileUtils.rm_rf(folder)
 	end
 end
