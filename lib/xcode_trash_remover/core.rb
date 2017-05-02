@@ -33,7 +33,6 @@ module XcodeTrashRemover
 				next
 			end
 			dir.each do |folder|
-				puts "folder: #{folder}"
 				trash_size += dir_size(folder)
 				end
 			end
@@ -43,7 +42,6 @@ module XcodeTrashRemover
 		def remove_trash
 			@@xcode_directories.each do |dir|
 			dir.each do |folder|
-				puts folder
 				FileUtils.rm_rf(folder.gsub(/ /, '\ '))
 				end
 			end
