@@ -13,19 +13,15 @@ module XcodeTrashRemover
 							]
 
 		def dir_size(dir_path)
-		  total_size = 0
-		  Find.find(dir_path) do |path|
-		      if FileTest.directory?(path)
-		        if File.basename(path)[0] == ?.
-		          Find.prune
-		        else
-		          next
-		        end
-		      else
-		        total_size += FileTest.size(path)
-		      end
-		    end
-		    total_size
+				dir_path << '/' unless dir_path.end_with?('/')
+
+			  raise RuntimeError, "#{dir_path} is not a directory" unless File.directory?(dir_path)
+
+			  total_size = 0
+			  Dir["#{dir_path}**/*"].each do |f|
+			    total_size += File.size(f) if File.file?(f) && File.size?(f)
+			  end
+			  total_size
 		end
 
 		# TODO: function to return best size (MB or GB)
@@ -46,7 +42,7 @@ module XcodeTrashRemover
 		def remove_trash
 			@@xcode_directories.each do |dir|
 			dir.each do |folder|
-				FileUtils.rm_rf(folder)
+				FileUtils.rm_rf(folder.gsub(/ /, '\ '))
 				end
 			end
 		end
