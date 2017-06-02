@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    xcode_trash_remover (1.0.0)
+    xcode_trash_remover (1.0.1)
 
 GEM
   remote: https://rubygems.org/
