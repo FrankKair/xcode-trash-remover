@@ -12,19 +12,6 @@ module XcodeTrashRemover
 							Dir.glob("#{File.expand_path('~')}/Library/Developer/Xcode/Archives/*"),
 							]
 
-		def dir_size(dir_path)
-			dir_path << '/' unless dir_path.end_with?('/')
-			raise RuntimeError, "#{dir_path} is not a directory" unless File.directory?(dir_path)
-
-			total_size = 0
-			Dir["#{dir_path}**/*"].each do |f|
-				total_size += File.size(f) if File.file?(f) && File.size?(f)
-			end
-			total_size
-		end
-
-		# TODO: function to return best size (MB or GB)
-
 		def get_core_simulator_folders
 			dirs = []
 
@@ -57,7 +44,7 @@ module XcodeTrashRemover
 				next
 			end
 			dir.each do |folder|
-				trash_size += dir_size(folder)
+				trash_size += SizeHelper::dir_size(folder)
 				end
 			end
 			trash_size
