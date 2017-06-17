@@ -2,7 +2,6 @@ require 'fileutils'
 require 'find'
 
 module XcodeTrashRemover
-
 	module SizeHelper
 		extend self
 
@@ -18,7 +17,5 @@ module XcodeTrashRemover
 			end
 			total_size
 		end
-
 	end
-
 end

@@ -2,9 +2,7 @@ require 'fileutils'
 require 'find'
 
 module XcodeTrashRemover
-
 	module Core
-
 		extend self
 
 		@@xcode_directories = [
@@ -57,7 +55,5 @@ module XcodeTrashRemover
 				end
 			end
 		end
-
 	end
-
 end
