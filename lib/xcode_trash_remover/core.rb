@@ -38,11 +38,11 @@ module XcodeTrashRemover
 			dirs = get_core_simulator_folders
 			@@xcode_directories.push(dirs)
 			@@xcode_directories.each do |dir|
-			if dir.empty?
-				next
-			end
-			dir.each do |folder|
-				trash_size += SizeHelper::dir_size(folder)
+				if dir.empty?
+					next
+				end
+				dir.each do |folder|
+					trash_size += SizeHelper::dir_size(folder)
 				end
 			end
 			trash_size
@@ -50,8 +50,8 @@ module XcodeTrashRemover
 
 		def remove_trash
 			@@xcode_directories.each do |dir|
-			dir.each do |folder|
-				FileUtils.rm_rf(folder.gsub(/ /, '\ '))
+				dir.each do |folder|
+					FileUtils.rm_rf(folder.gsub(/ /, '\ '))
 				end
 			end
 		end
