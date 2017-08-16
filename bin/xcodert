@@ -3,8 +3,8 @@ require 'xcode_trash_remover'
 
 trash_size = XcodeTrashRemover::Core.get_trash_size
 if trash_size > 0
-	XcodeTrashRemover::Core.remove_trash
-	puts "#{trash_size} bytes deleted"
+  XcodeTrashRemover::Core.remove_trash
+  puts "#{trash_size} bytes deleted"
 else
-	puts "The directories are empty. No trash files."
+  puts "The directories are empty. No trash files."
 end
