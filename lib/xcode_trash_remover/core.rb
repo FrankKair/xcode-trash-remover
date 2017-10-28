@@ -6,18 +6,16 @@ module XcodeTrashRemover
     extend self
 
     @@xcode_directories = [
-              Dir.glob("#{File.expand_path('~')}/Library/Developer/Xcode/DerivedData/*"),
-              Dir.glob("#{File.expand_path('~')}/Library/Developer/Xcode/Archives/*"),
-              ]
+      Dir.glob("#{File.expand_path('~')}/Library/Developer/Xcode/DerivedData/*"),
+      Dir.glob("#{File.expand_path('~')}/Library/Developer/Xcode/Archives/*")
+    ]
 
     def get_trash_size
       trash_size = 0
       @@xcode_directories.each do |dir|
-        if dir.empty?
-          next
-        end
+        next if dir.empty?
         dir.each do |folder|
-          trash_size += SizeHelper::dir_size(folder)
+          trash_size += SizeHelper.dir_size(folder)
         end
       end
       trash_size
