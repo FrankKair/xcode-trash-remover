@@ -18,6 +18,7 @@ module XcodeTrashRemover
     def remove_trash
       total = total_size
       puts "Total           #{total}"
+      puts '-'
       if total.zero?
         puts 'The directories are empty. No trash files.'
         exit(0)
@@ -35,7 +36,6 @@ module XcodeTrashRemover
           remove_dir(subdir)
         end
       end
-      puts '-'
       puts "#{total} bytes removed!"
     end
 
