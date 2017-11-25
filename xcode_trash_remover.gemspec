@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['frankkair@gmail.com']
 
   spec.summary       = 'Simple script to remove Xcode trash files'
-  spec.description   = 'Simple script to remove Xcode derived data and archives trash files'
+  spec.description   = 'Script to remove trash files that Xcode generates'
   spec.homepage      = 'https://www.github.com/FrankKair/xcode-trash-remover'
   spec.license       = 'MIT'
 

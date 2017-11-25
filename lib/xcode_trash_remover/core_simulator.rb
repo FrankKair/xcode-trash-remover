@@ -4,7 +4,7 @@ require 'find'
 module XcodeTrashRemover
   module CoreSimulator
     extend self
-    def get_core_simulator_folders
+    def core_simulator_folders
       dirs = []
 
       # TODO: Select which version to delete (8, 9, Watch, TV...)
