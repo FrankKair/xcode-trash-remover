@@ -8,4 +8,10 @@ This is a simple script to remove Xcode's trash files that are generated under d
 
 ## Usage
 
-    $ xcodert
+Simply run:
+
+    $ xcclean
+
+And you'll see somthing like the following:
+
+<img src = https://raw.githubusercontent.com/FrankKair/xcode-trash-remover/master/assets/output.png width="50%" height="50%"/>
