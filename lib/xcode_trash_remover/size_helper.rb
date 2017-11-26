@@ -1,5 +1,4 @@
 require 'fileutils'
-require 'find'
 
 module XcodeTrashRemover
   module SizeHelper

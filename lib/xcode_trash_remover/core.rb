@@ -1,5 +1,4 @@
 require 'fileutils'
-require 'find'
 
 module XcodeTrashRemover
   module Core
@@ -71,8 +70,8 @@ module XcodeTrashRemover
     end
 
     def trash_size(dir)
+      return 0 if dir.empty?
       size = 0
-      return size if dir.empty?
       dir.each do |subdir|
         size += SizeHelper.dir_size(subdir)
       end
