@@ -5,18 +5,18 @@ module XcodeTrashRemover
     extend self
 
     def check_volumes
-      puts 'Dir             bytes'
+      puts 'Dir             size'
       puts
-      puts "DerivedData     #{derived_data_size}"
-      puts "Archives        #{archives_size}"
-      puts "XCPGDevices     #{playground_devices_size}"
-      puts "CoreSimulator   #{core_simulator_size}"
+      puts "DerivedData     #{derived_data_size.pretty}"
+      puts "Archives        #{archives_size.pretty}"
+      puts "XCPGDevices     #{playground_devices_size.pretty}"
+      puts "CoreSimulator   #{core_simulator_size.pretty}"
       puts
     end
 
     def remove_trash
       total = total_size
-      puts "Total           #{total}"
+      puts "Total           #{total.pretty}"
       puts '-'
       if total.zero?
         puts 'The directories are empty. No trash files.'
@@ -35,7 +35,7 @@ module XcodeTrashRemover
           remove_dir(subdir)
         end
       end
-      puts "#{total} bytes removed!"
+      puts "#{total.pretty} removed!"
     end
 
     private

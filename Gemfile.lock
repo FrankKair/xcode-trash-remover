@@ -2,10 +2,12 @@ PATH
   remote: .
   specs:
     xcode_trash_remover (2.0.0)
+      filesize
 
 GEM
   remote: https://rubygems.org/
   specs:
+    filesize (0.1.1)
     rake (10.4.2)
 
 PLATFORMS
