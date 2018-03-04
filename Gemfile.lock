@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     xcode_trash_remover (2.0.0)
-      filesize
+      filesize (~> 0.1.1)
 
 GEM
   remote: https://rubygems.org/

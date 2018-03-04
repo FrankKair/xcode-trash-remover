@@ -21,6 +21,12 @@ module XcodeTrashRemover
       puts "#{total.pretty} removed!"
     end
 
+    def show_options
+      puts 'Run:'
+      puts '$ xcclean -rm'
+      puts 'To remove the files from your system.'
+    end
+
     private
 
     def print_total_size(size)
@@ -34,10 +40,8 @@ module XcodeTrashRemover
 
     def remove_dirs
       dirs = [
-        XcodeDir.derived_data,
-        XcodeDir.archives,
-        XcodeDir.playground_devices,
-        XcodeDir.core_simulator
+        XcodeDir.derived_data, XcodeDir.archives,
+        XcodeDir.playground_devices, XcodeDir.core_simulator
       ]
 
       dirs.each do |dir|
