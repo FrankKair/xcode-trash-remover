@@ -3,4 +3,11 @@ require 'xcode_trash_remover'
 
 puts '== Xcode Trash Remover =='
 XcodeTrashRemover::Core.check_volumes
-XcodeTrashRemover::Core.remove_trash
+
+input = ARGV[0]
+case input
+when '-rm'
+  XcodeTrashRemover::Core.remove_trash
+else
+  XcodeTrashRemover::Core.show_options
+end
