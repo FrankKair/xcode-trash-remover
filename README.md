@@ -8,10 +8,23 @@ This is a simple script to remove Xcode's trash files that are generated under d
 
 ## Usage
 
-Simply run `$ xcclean` to check your directories. And run:
+`$ xcclean` to check your directories.
 
-    $ xcclean -rm
-
-To remove the files. You'll see something like the following:
+`$ xcclean -rm` to **remove** the files.
 
 <img src = https://raw.githubusercontent.com/FrankKair/xcode-trash-remover/master/assets/output.png width="30%" height="30%"/>
+
+## Directories
+
+- `Derived Data`: Intermediate build information.
+
+- `Archives`: Info about the target. Used for debbuging deployd applications.
+
+- `XCPGDevices`: Xcode Playground files.
+
+- `CoreSimulator/Devices`: Simulators and devices. That's where Xcode stores the apps' data.
+
+## Warning
+
+You should only use this program if you're sure you're not going to use the information contained in these folders.
+
