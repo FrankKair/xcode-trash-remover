@@ -40,8 +40,8 @@ module XcodeTrashRemover
 
     def remove_dirs
       dirs = [
-        XcodeDir.derived_data, XcodeDir.archives,
-        XcodeDir.playground_devices, XcodeDir.core_simulator
+        XcodeDir.deriveddata, XcodeDir.archives,
+        XcodeDir.xcpgdevices, XcodeDir.coresimulator_devices
       ]
 
       dirs.each do |dir|
@@ -52,7 +52,7 @@ module XcodeTrashRemover
     end
 
     def derived_data_size
-      trash_size(XcodeDir.derived_data)
+      trash_size(XcodeDir.deriveddata)
     end
 
     def archives_size
@@ -60,11 +60,11 @@ module XcodeTrashRemover
     end
 
     def playground_devices_size
-      trash_size(XcodeDir.playground_devices)
+      trash_size(XcodeDir.xcpgdevices)
     end
 
     def core_simulator_size
-      trash_size(XcodeDir.core_simulator)
+      trash_size(XcodeDir.coresimulator_devices)
     end
 
     def total_size
