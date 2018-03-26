@@ -16,9 +16,12 @@ module XcodeTrashRemover
 
     def remove_trash
       total = total_size
-      print_total_size(total)
       remove_dirs
-      puts "#{total.pretty} removed!"
+
+      puts "Total           #{total.pretty}"
+      puts '-'
+      puts 'The directories are empty. No trash files.' if total.zero?
+      puts "#{total.pretty} removed!" unless total.zero?
     end
 
     def show_options
@@ -28,15 +31,6 @@ module XcodeTrashRemover
     end
 
     private
-
-    def print_total_size(size)
-      puts "Total           #{size.pretty}"
-      puts '-'
-      if size.zero?
-        puts 'The directories are empty. No trash files.'
-        exit(0)
-      end
-    end
 
     def remove_dirs
       dirs = [
@@ -68,20 +62,16 @@ module XcodeTrashRemover
     end
 
     def total_size
-      total = 0
-      total += derived_data_size
-      total += archives_size
-      total += playground_devices_size
-      total += core_simulator_size
-      total
+      [derived_data_size,
+       archives_size,
+       playground_devices_size,
+       core_simulator_size].reduce(:+)
     end
 
     def trash_size(dir)
       return 0 if dir.empty?
       size = 0
-      dir.each do |subdir|
-        size += SizeHelper.dir_size(subdir)
-      end
+      dir.each { |subdir| size += SizeHelper.dir_size(subdir) }
       size
     end
 
