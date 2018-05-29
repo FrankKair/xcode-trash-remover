@@ -12,7 +12,7 @@ This is a simple script to remove Xcode's trash files that are generated under d
 
 `$ xcclean -rm` to **remove** the files.
 
-<img src = https://raw.githubusercontent.com/FrankKair/xcode-trash-remover/master/assets/output.png width="30%" height="30%"/>
+<img src = https://raw.githubusercontent.com/FrankKair/xcode-trash-remover/master/assets/output2.png width="45%" height="45%"/>
 
 ## Directories
 
