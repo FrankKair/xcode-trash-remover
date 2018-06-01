@@ -2,7 +2,7 @@ require 'fileutils'
 
 module XcodeTrashRemover
   module SizeHelper
-    extend self
+    module_function
 
     def dir_size(dir_path)
       dir_path << '/' unless dir_path.end_with?('/')
