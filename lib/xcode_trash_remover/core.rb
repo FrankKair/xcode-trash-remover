@@ -76,9 +76,7 @@ module XcodeTrashRemover
 
     def trash_size(dir)
       return 0 if dir.empty?
-      size = 0
-      dir.each { |subdir| size += SizeHelper.dir_size(subdir) }
-      size
+      dir.reduce(0) { |size, subdir| size += SizeHelper.dir_size(subdir) }
     end
 
     def remove_dir(dir)
