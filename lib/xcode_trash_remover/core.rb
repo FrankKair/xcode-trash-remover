@@ -7,10 +7,10 @@ module XcodeTrashRemover
     def check_volumes
       puts 'Dir             size'
       puts
-      puts "DerivedData     #{derived_data_size.pretty}"
+      puts "DerivedData     #{deriveddata_size.pretty}"
       puts "Archives        #{archives_size.pretty}"
-      puts "XCPGDevices     #{playground_devices_size.pretty}"
-      puts "CoreSimulator   #{core_simulator_size.pretty}"
+      puts "XCPGDevices     #{xcpgdevices_size.pretty}"
+      puts "CoreSimulator   #{coresimulator_devices_size.pretty}"
       puts
     end
 
@@ -45,27 +45,33 @@ module XcodeTrashRemover
       end
     end
 
-    def derived_data_size
-      trash_size(XcodeDir.deriveddata)
-    end
+    dirs = %w[
+      deriveddata
+      archives
+      xcpgdevices
+      coresimulator_devices
+    ]
 
-    def archives_size
-      trash_size(XcodeDir.archives)
-    end
-
-    def playground_devices_size
-      trash_size(XcodeDir.xcpgdevices)
-    end
-
-    def core_simulator_size
-      trash_size(XcodeDir.coresimulator_devices)
+    dirs.each do |dir|
+      define_method("#{dir}_size") do
+        case dir
+        when 'deriveddata'
+          trash_size(XcodeDir.deriveddata)
+        when 'archives'
+          trash_size(XcodeDir.archives)
+        when 'xcpgdevices'
+          trash_size(XcodeDir.xcpgdevices)
+        when 'coresimulator_devices'
+          trash_size(XcodeDir.coresimulator_devices)
+        end
+      end
     end
 
     def total_size
-      [derived_data_size,
+      [deriveddata_size,
        archives_size,
-       playground_devices_size,
-       core_simulator_size].reduce(:+)
+       xcpgdevices_size,
+       coresimulator_devices_size].reduce(:+)
     end
 
     def trash_size(dir)
