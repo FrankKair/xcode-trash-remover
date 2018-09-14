@@ -8,6 +8,8 @@ This is a simple script to remove Xcode's trash files that are generated under d
 
 ## Usage
 
+    $ xcclean
+
 ```
 Usage: xcclean [options]
         --check           Checks the volumes
