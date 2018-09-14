@@ -8,9 +8,11 @@ This is a simple script to remove Xcode's trash files that are generated under d
 
 ## Usage
 
-`$ xcclean` to check your directories.
-
-`$ xcclean -rm` to **remove** the files.
+```
+Usage: xcclean [options]
+        --check           Checks the volumes
+        --remove          Removes the files from your system
+```
 
 <img src = https://raw.githubusercontent.com/FrankKair/xcode-trash-remover/master/assets/output2.png width="45%" height="45%"/>
 
