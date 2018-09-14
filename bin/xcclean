@@ -1,13 +1,34 @@
 #!/usr/bin/env ruby
+require 'optparse'
 require 'xcode_trash_remover'
 
-puts '== Xcode Trash Remover =='
-XcodeTrashRemover::Core.check_volumes
 
-input = ARGV[0]
-case input
-when '-rm'
-  XcodeTrashRemover::Core.remove_trash
-else
-  XcodeTrashRemover::Core.show_options
+ARGV[0] = '--help' if ARGV.empty?
+unless ARGV[0].include?('--') || ARGV[0].include?('-')
+  puts "invalid option: #{ARGV[0]}"
+end
+
+options = {}
+opt_parser = OptionParser.new do |opt|
+  opt.on('--check', 'Checks the volumes') do |o|
+    options[:check] = o
+  end
+  opt.on('--remove', 'Removes the files from your system') do |o|
+    options[:remove] = o
+  end
+end
+
+begin
+  opt_parser.parse!
+  options.keys.each do |k|
+    case k
+    when :check
+      XcodeTrashRemover::Core.check_volumes
+    when :remove
+      XcodeTrashRemover::Core.check_volumes
+      XcodeTrashRemover::Core.remove_trash
+    end
+  end
+rescue StandardError => e
+  puts e.to_s unless e.message == 'exit'
 end
