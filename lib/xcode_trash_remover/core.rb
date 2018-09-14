@@ -24,12 +24,6 @@ module XcodeTrashRemover
       puts "#{total.pretty} removed!" unless total.zero?
     end
 
-    def show_options
-      puts 'Run:'
-      puts '$ xcclean -rm'
-      puts 'To remove the files from your system.'
-    end
-
     private
 
     def remove_dirs
