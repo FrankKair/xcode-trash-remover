@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    xcode_trash_remover (2.0.1)
+    xcode_trash_remover (2.0.2)
       filesize (~> 0.1.1)
 
 GEM
@@ -19,4 +19,4 @@ DEPENDENCIES
   xcode_trash_remover!
 
 BUNDLED WITH
-   1.14.6
+   1.16.1
