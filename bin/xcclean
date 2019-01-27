@@ -24,9 +24,11 @@ begin
     case k
     when :check
       XcodeTrashRemover::Core.check_volumes
+      break
     when :remove
       XcodeTrashRemover::Core.check_volumes
       XcodeTrashRemover::Core.remove_trash
+      break
     end
   end
 rescue StandardError => e
