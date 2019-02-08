@@ -1,12 +1,5 @@
 module XcodeTrashRemover
   module XcodeDir
-    extend self
-
-    # Creates:
-    # deriveddata, archives
-    # xcpgdevices and coresimulator_devices
-    # methods.
-
     dir_names = %w[
       Xcode/DerivedData
       Xcode/Archives
@@ -15,7 +8,10 @@ module XcodeTrashRemover
     ]
 
     dir_names.each do |dir|
-      trimmed_dir_name = dir.downcase.tr('/', '_').to_s.gsub('xcode_', '')
+      trimmed_dir_name = dir.downcase
+                            .tr('/', '_')
+                            .to_s
+                            .gsub('xcode_', '')
 
       define_method(trimmed_dir_name) do
         root(dir)
@@ -27,5 +23,11 @@ module XcodeTrashRemover
     def root(dir)
       Dir.glob("#{File.expand_path('~')}/Library/Developer/#{dir}/*")
     end
+
+    module_function :deriveddata,
+                    :archives,
+                    :xcpgdevices,
+                    :coresimulator_devices,
+                    :root
   end
 end

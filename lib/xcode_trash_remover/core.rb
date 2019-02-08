@@ -2,8 +2,6 @@ require 'fileutils'
 
 module XcodeTrashRemover
   module Core
-    extend self
-
     def check_volumes
       puts 'Dir             size'
       puts
@@ -76,5 +74,16 @@ module XcodeTrashRemover
     def remove_dir(dir)
       FileUtils.rm_rf(dir.gsub(/ /, '\ '))
     end
+
+    module_function :check_volumes,
+                    :remove_trash,
+                    :remove_dirs,
+                    :deriveddata_size,
+                    :archives_size,
+                    :xcpgdevices_size,
+                    :coresimulator_devices_size,
+                    :total_size,
+                    :trash_size,
+                    :remove_dir
   end
 end
