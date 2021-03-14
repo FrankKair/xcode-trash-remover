@@ -2,6 +2,8 @@
 
 This is a simple script to remove Xcode's trash files that are generated under development.
 
+If you need a full fledged application, check [this](https://github.com/vashpan/xcode-dev-cleaner) out.
+
 ## Installation
 
     $ gem install xcode_trash_remover
