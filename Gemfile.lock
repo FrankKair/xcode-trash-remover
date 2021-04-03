@@ -8,14 +8,14 @@ GEM
   remote: https://rubygems.org/
   specs:
     filesize (0.1.1)
-    rake (10.4.2)
+    rake (13.0.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   bundler (~> 1.14)
-  rake (~> 10.0)
+  rake (~> 13.0)
   xcode_trash_remover!
 
 BUNDLED WITH
