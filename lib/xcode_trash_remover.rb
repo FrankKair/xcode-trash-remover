@@ -1,5 +1,5 @@
+# frozen_string_literal: true
+
 require 'xcode_trash_remover/version'
-require 'xcode_trash_remover/core'
-require 'xcode_trash_remover/int_pretty_size'
-require 'xcode_trash_remover/size_helper'
 require 'xcode_trash_remover/xcode_dir'
+require 'xcode_trash_remover/cli'
